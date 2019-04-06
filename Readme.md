@@ -50,6 +50,7 @@ But why are there so few commits? This project has existed for a long time and h
 - Configurable redirects
 - Ability to create proxy routes (i.e. for frameworks like jQuery which appear in the `node_modules` folder) so that they have an URL accessible from the browser such as `/js/libs/jquery.min.js`)
 - Automatic server restart when developing
+- Pre-made Dockerfile
 
 
 ---
