@@ -63,6 +63,4 @@ module.exports = app => {
 
         next();
     });
-
-    return app;
 };

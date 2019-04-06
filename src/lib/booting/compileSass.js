@@ -28,7 +28,6 @@ module.exports = app => {
             files: cssConfig.sassFilesToCompile
         }).then(() => {
             setupCleanupOnExit();
-            return app;
         }).catch(error => {
             throw new Error(error);
         });
@@ -46,8 +45,6 @@ module.exports = app => {
             }));
 
             setupCleanupOnExit();
-
-            return app;
         }).catch(error => {
             throw new Error(error);
         });

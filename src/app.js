@@ -13,7 +13,9 @@ const bodyParser = require('body-parser');
 
 const path = require('path');
 
-const proxies = require('./lib/booting/proxies');
+const configureProxies = require('./lib/booting/proxies');
+const configureNunjucks = require('./lib/booting/nunjucks');
+const configureSass = require('./lib/booting/compileSass');
 const { redirectToLanguage } = require('./lib/translate');
 
 
@@ -28,7 +30,7 @@ module.exports = async () => {
 
 
     // Nunjucks
-    app = require('./lib/booting/nunjucks.js')(app);
+    configureNunjucks(app);
 
 
     // Defaults
@@ -39,11 +41,11 @@ module.exports = async () => {
     };
 
     // SASS compliation and frontend JavaScript concatination
-    app = await require('./lib/booting/compileSass')(app);
+    await configureSass(app);
 
 
     // Setup routes
-    app = proxies(express, app);
+    configureProxies(express, app);
     app.use(express.static(path.join(__dirname, 'public')));
 
     app.get('/', (req, res) => {

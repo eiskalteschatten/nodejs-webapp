@@ -17,6 +17,4 @@ module.exports = (express, app) => {
             app.use(routePath, express.static(router));
         }
     }
-
-    return app;
 };
