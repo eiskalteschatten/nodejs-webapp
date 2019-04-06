@@ -17,13 +17,12 @@ module.exports = router => {
         if (random === 0) {
             return returnError({
                 status: 418,
-                message: 'I am a teapot' + random
+                message: 'I am a teapot'
             }, req, res);
         }
 
         res.json({
-            message: translate(lang, 'success'),
-            random
+            message: translate(lang, 'success')
         });
     });
 };
