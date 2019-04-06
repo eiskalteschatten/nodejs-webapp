@@ -12,6 +12,6 @@ function returnError(error, res, req) {
     }
     else {
         console.error(error);
-        res.status(500).send(translate(req.lang, 'anErrorOccurred', req.app.locales));
+        res.status(500).send(translate(req.lang, 'anErrorOccurred'));
     }
 }

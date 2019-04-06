@@ -4,6 +4,10 @@ const translations = require('../translations');
 const helper = require('../lib/helper.js');
 
 const moment = require('moment');
+const config = require('config');
+
+const locales = config.get('locales');
+
 
 module.exports = {
     translate,
@@ -14,7 +18,7 @@ module.exports = {
     getLocalizedDate
 };
 
-function translate(lang, string, locales) {
+function translate(lang, string) {
     const langStrings = translations[lang];
 
     const useDefaultLangage = () => {
@@ -34,7 +38,6 @@ function translate(lang, string, locales) {
 }
 
 function redirectToLanguage(req, res, route) {
-    const locales = req.app.locals.locales;
     let lang = req.acceptsLanguages(locales.availableLanguages);
 
     if (!lang) {
@@ -45,7 +48,6 @@ function redirectToLanguage(req, res, route) {
 }
 
 function checkLangUrl(req, res, route, next) {
-    const locales = req.app.locals.locales;
     const lang = req.lang;
 
     if (locales.availableLanguages.indexOf(lang) === -1) {
@@ -65,7 +67,6 @@ function getLocalizedUrl(lang, route) {
 }
 
 function getAllLanguageUrls(req) {
-    const locales = req.app.locals.locales;
     const lang = req.lang;
     const urls = {};
     const route = helper.parseRoute(req.originalUrl);

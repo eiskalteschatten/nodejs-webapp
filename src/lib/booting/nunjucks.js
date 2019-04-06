@@ -21,7 +21,7 @@ module.exports = app => {
 
     // Custom filters in Nunjucks
     nunjucksEnv.addFilter('translate', (str, lang) => {
-        return transLib.translate(lang, str, app.locals.locales);
+        return transLib.translate(lang, str);
     });
 
     nunjucksEnv.addFilter('langUrl', (route, lang) => {
