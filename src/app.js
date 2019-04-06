@@ -14,6 +14,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const configureProxies = require('./lib/booting/proxies');
+const configureRedirects = require('./lib/booting/redirects');
 const configureNunjucks = require('./lib/booting/nunjucks');
 const configureSass = require('./lib/booting/compileSass');
 const configureErrorPages = require('./lib/booting/errorPages');
@@ -56,6 +57,7 @@ module.exports = async () => {
         req.lang = req.params.lang;
         next();
     });
+    app.use('*', configureRedirects);
     app.use('/:lang', enrouten({
         directory: 'controllers'
     }));

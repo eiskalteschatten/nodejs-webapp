@@ -25,5 +25,8 @@ module.exports = {
             'libs.scss',
             'main.scss'
         ],
+    },
+    redirects: {
+        '/old-url': '/new-url'
     }
 };
