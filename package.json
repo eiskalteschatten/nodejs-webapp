@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "start": "node ./src/index.js",
-        "start:dev": "NODE_ENV=development ./node_modules/.bin/nodemon -e njk,js,json --ignore 'public/**/*.js' --inspect",
+        "start:dev": "NODE_ENV=development ./node_modules/.bin/nodemon",
         "start:staging": "NODE_ENV=staging npm start",
         "start:prod": "NODE_ENV=production npm start",
         "docker": "bash -c \"trap 'docker-compose down' EXIT; docker-compose up\"",

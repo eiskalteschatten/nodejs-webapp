@@ -1,0 +1,5 @@
+{
+    "ignore": ["public/**/*.js", "**/*.spec.js", ".git", "node_modules"],
+    "watch": ["src", "config"],
+    "ext": "njk,js,json"
+}
