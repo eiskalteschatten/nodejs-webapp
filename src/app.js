@@ -16,6 +16,7 @@ const path = require('path');
 const configureProxies = require('./lib/booting/proxies');
 const configureNunjucks = require('./lib/booting/nunjucks');
 const configureSass = require('./lib/booting/compileSass');
+const configureErrorPages = require('./lib/booting/errorPages');
 const { redirectToLanguage } = require('./lib/translate');
 
 
@@ -60,36 +61,8 @@ module.exports = async () => {
     }));
 
 
-    // Catch 404 and forward to error handler
-    app.use((req, res, next) => {
-        const error = new Error('Not Found');
-        error.status = 404;
-        next(error);
-    });
-
-
-    // Error handlers
-
-    // Development error handler - will print stacktrace
-    if (app.get('env') === 'development') {
-        app.use((error, req, res, next) => {
-            res.status(error.status || 500);
-            console.error(error.message);
-
-            res.render('error.njk', {
-                message: error.message,
-                error: error
-            });
-        });
-    }
-
-
-    // Production error handler - no stacktraces leaked to user
-    app.use((error, req, res, next) => {
-        res.status(error.status || 500);
-        console.error(error.message);
-        res.render('error.njk');
-    });
+    // Configure error pages
+    configureErrorPages(app);
 
 
     console.log('App started with:');
