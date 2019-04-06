@@ -15,7 +15,6 @@
         "lint": "./node_modules/.bin/eslint ."
     },
     "dependencies": {
-        "apicache": "^0.8.3",
         "body-parser": "^1.18.3",
         "bootstrap": "^4.3.1",
         "compile-sass": "^0.0.5",

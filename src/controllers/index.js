@@ -1,7 +1,5 @@
 'use strict';
 
-//const cache = require('apicache').middleware;
-
 const { translate } = require('../lib/translate');
 const track = require('../lib/matomo');
 
