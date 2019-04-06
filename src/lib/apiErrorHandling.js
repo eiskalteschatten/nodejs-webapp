@@ -6,9 +6,9 @@ module.exports = {
     returnError
 };
 
-function returnError(error, res, req) {
-    if (error.statusCode) {
-        res.status(error.statusCode).send(error.message);
+function returnError(error, req, res) {
+    if (error.status) {
+        res.status(error.status).send(error.message);
     }
     else {
         console.error(error);
