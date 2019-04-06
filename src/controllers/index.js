@@ -9,7 +9,6 @@ const track = require('../lib/matomo');
 module.exports = router => {
     router.get('/', (req, res) => {
         const lang = req.lang;
-        const locales = req.app.locales;
         const pageTitle = translate(lang, 'homepageTitle');
 
         track(req, pageTitle);

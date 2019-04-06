@@ -2,7 +2,7 @@
 
 const express = require('express');
 const enrouten = require('express-enrouten');
-let app = express();
+const app = express();
 
 const config = require('config');
 
