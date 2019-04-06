@@ -1,0 +1,49 @@
+{
+    "name": "nodewebapp",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "start": "node ./src/index.js",
+        "start:dev": "NODE_ENV=development ./node_modules/.bin/nodemon -e njk,js,json --ignore 'public/**/*.js' --inspect",
+        "start:staging": "NODE_ENV=staging npm start",
+        "start:prod": "NODE_ENV=production npm start",
+        "docker": "bash -c \"trap 'docker-compose down' EXIT; docker-compose up\"",
+        "docker:rebuild": "bash -c \"trap 'docker-compose down' EXIT; docker-compose up --build\"",
+        "docker:start": "bash -c \"trap 'docker-compose down' EXIT; docker-compose up\"",
+        "cleanup": "node -e 'require(\"./src/lib/exitCleanup\")()'",
+        "test": "npm run lint",
+        "lint": "./node_modules/.bin/eslint ."
+    },
+    "dependencies": {
+        "apicache": "^0.8.3",
+        "body-parser": "^1.18.3",
+        "bootstrap": "^4.3.1",
+        "compile-sass": "^0.0.5",
+        "compression": "^1.7.1",
+        "config": "^3.0.1",
+        "cookie-parser": "~1.4.3",
+        "express": "^4.16.4",
+        "express-enrouten": "^1.3.0",
+        "highlight.js": "^9.12.0",
+        "jquery": "^3.3.1",
+        "marked": "^0.3.12",
+        "matomo-tracker": "^2.2.1",
+        "moment": "^2.20.1",
+        "morgan": "^1.9.1",
+        "node-sass": "^4.7.2",
+        "nunjucks": "^3.1.7",
+        "nunjucks-markdown": "^2.0.1"
+    },
+    "devDependencies": {
+        "debug": "^4.1.1",
+        "eslint": "^4.16.0",
+        "eslint-plugin-promise": "^3.6.0",
+        "husky": "^1.3.1",
+        "nodemon": "^1.18.10"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run lint"
+        }
+    }
+}
