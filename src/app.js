@@ -42,7 +42,7 @@ module.exports = async () => {
         locales: config.get('locales')
     };
 
-    // SASS compliation and frontend JavaScript concatination
+    // SASS compliation
     await configureSass(app);
 
 
