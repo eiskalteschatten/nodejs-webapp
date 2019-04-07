@@ -2,6 +2,7 @@
 
 const { translate } = require('../lib/translate');
 const track = require('../lib/matomo');
+const { markdownToHtml } = require('../lib/markdown');
 
 
 module.exports = router => {
@@ -11,6 +12,11 @@ module.exports = router => {
 
         track(req, pageTitle);
 
+        const markdown = markdownToHtml(`
+# Controller-Rendered
+This is **controller-rendered** markdown.
+        `);
+
         res.render('home/index.njk', {
             title: pageTitle,
             items: [
@@ -18,7 +24,8 @@ module.exports = router => {
                 { name : lang },
                 { name : 'item #3' },
                 { name : 'item #4' }
-            ]
+            ],
+            markdown
         });
     });
 };
