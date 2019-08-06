@@ -40,7 +40,7 @@ module.exports = app => {
             cssPath: path.join(iAmHere, 'public/css/'),
             files: ['libs.scss']
         }).then(() => {
-            app.use('/css/:cssName', compileSass({
+            app.use('/css/:cssName', compileSass.setup({
                 sassFilePath: path.join(iAmHere, 'scss/')
             }));
 
